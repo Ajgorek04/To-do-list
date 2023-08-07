@@ -5,21 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do-List</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <div class="container">
       <header>To Do List</header>
-      <ul>
+      <ul id="lista">
         <li>
-          <p>Task 1:</p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-          blanditiis quo explicabo neque voluptates vel tempora modi eum
-          dignissimos cum veniam, provident fuga laborum officiis labore
-          deserunt beatae ab architecto?
+          <div class="up">
+            <i class="fa-solid fa-xmark remove"></i>
+            <i class="fa-solid fa-check mark"></i>
+            <p class="task">Task 1:</p>
+          </div>
+          <p class="textP">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+          </p>
         </li>
-        <li><p>Task 2:</p></li>
-        <li><p>Task 3:</p></li>
       </ul>
+      <button id="newTask">New task</button>
     </div>
 
     <script src="app.js"></script>
