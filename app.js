@@ -30,6 +30,7 @@ function task() {
   removeBtn.classList.add("remove");
   removeBtn.addEventListener("click", () => {
     li.remove();
+    localStorage.setItem("taskList", JSON.stringify(lista.innerHTML));
   });
 
   const markBtn = document.createElement("i");
@@ -39,6 +40,7 @@ function task() {
 
   markBtn.addEventListener("click", () => {
     p2.classList.toggle("markUp");
+    localStorage.setItem("taskList", JSON.stringify(lista.innerHTML));
   });
 
   const p1 = document.createElement("p");
@@ -55,4 +57,33 @@ function task() {
   li.append(div);
   li.append(p2);
   lista.append(li);
+
+  localStorage.setItem("taskList", JSON.stringify(lista.innerHTML));
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTaskList = localStorage.getItem("taskList");
+
+  if (savedTaskList) {
+    lista.innerHTML = JSON.parse(savedTaskList);
+
+    const removeBtns = document.querySelectorAll(".remove");
+    const markBtns = document.querySelectorAll(".mark");
+
+    removeBtns.forEach((removeBtn) => {
+      removeBtn.addEventListener("click", () => {
+        removeBtn.parentElement.parentElement.remove();
+        localStorage.setItem("taskList", JSON.stringify(lista.innerHTML));
+      });
+    });
+
+    markBtns.forEach((markBtn) => {
+      markBtn.addEventListener("click", () => {
+        const parentLi = event.target.closest("li");
+        const textP = parentLi.querySelector(".textP");
+        textP.classList.toggle("markUp");
+        localStorage.setItem("taskList", JSON.stringify(lista.innerHTML));
+      });
+    });
+  }
+});
